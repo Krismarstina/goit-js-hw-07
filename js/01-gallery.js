@@ -20,17 +20,22 @@ gallery.addEventListener("click", onImageClick);
 
 function onImageClick(event) {
   event.preventDefault();
+
   const largeImageUrl = event.target.dataset.source;
+  if (largeImageUrl == null || largeImageUrl == "") {
+    return;
+  }
   const instance = basicLightbox.create(
     `<img class="gallery__image" src="${largeImageUrl}"/>`
   );
 
   instance.show();
-}
 
-document.addEventListener("keydown", (evt) => {
-  const onModal = document.querySelector(".basicLightbox");
-  if (evt.key === "Escape") {
-    onModal.remove();
-  }
-});
+  document.addEventListener("keydown", (evt) => {
+    const onModal = document.querySelector(".basicLightbox");
+    if (evt.key === "Escape") {
+      onModal.remove();
+      document.removeEventListener;
+    }
+  });
+}
